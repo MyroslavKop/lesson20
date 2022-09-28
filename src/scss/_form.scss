@@ -1,0 +1,11 @@
+form {
+  display: $fl;
+  margin-top: $gap;
+  align-items: center;
+  gap: 10px;
+  width: 70%;
+  white-space: nowrap;
+  .input-group-text {
+    background-color: rgb(147, 183, 224);
+  }
+}

@@ -1,4 +1,5 @@
 const path = require("path");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -7,6 +8,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "main.bundle.js",
+    assetModuleFilename: "assets/[name][ext]",
+  },
+  devServer: {
+    open: true,
   },
   module: {
     rules: [
@@ -18,12 +23,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src/index.html"),
-      filename: "main.bundle.html",
+      template: path.resolve(__dirname, "./src/index.html"),
     }),
     new MiniCssExtractPlugin({
       filename: "main.bundle.css",
     }),
+    new CleanWebpackPlugin(),
   ],
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
 };
